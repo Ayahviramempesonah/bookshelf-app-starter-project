@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css" />
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookshelf App</title>
@@ -97,6 +98,18 @@
           </div>
         </div>
       </section>
+      //ex modal
+      <div  id="editModal" class="modal-body">
+        <form>
+          <label for="title">Judul:</label>
+          <input type="text" id="title" value=""><br><br>
+          <label for="author">Penulis:</label>
+          <input type="text" id="author" value=""><br><br>
+          <label for="year">Tahun:</label>
+          <input type="number" id="year" value=""><br><br>
+          <button type="submit">Simpan Perubahan</button>
+        </form>
+
     </main>
   </body>
 </html>

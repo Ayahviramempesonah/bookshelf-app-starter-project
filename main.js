@@ -61,12 +61,72 @@ let books = [
           displayBooks();
         });
   
-        const editButton = document.createElement("button");
-        editButton.setAttribute("data-testid", "bookItemEditButton");
-        editButton.textContent = "Edit Buku";
-        editButton.addEventListener("click", () => {
-          // Fungsi edit buku
-        });
+//         const editButton = document.createElement("button");
+// editButton.setAttribute("data-testid", "bookItemEditButton");
+// editButton.textContent = "Edit Buku";
+// editButton.addEventListener("click", () => {
+//   const bookId = book.id;
+//   const bookIndex = books.findIndex(b => b.id === bookId);
+
+//   if (bookIndex!== -1) {
+//     const editForm = document.createElement("form");
+//     editForm.innerHTML = `
+//       <label for="editTitle">Judul:</label>
+//       <input type="text" id="editTitle" value="${book.title}"><br><br>
+//       <label for="editAuthor">Penulis:</label>
+//       <input type="text" id="editAuthor" value="${book.author}"><br><br>
+//       <label for="editYear">Tahun:</label>
+//       <input type="number" id="editYear" value="${book.year}"><br><br>
+//       <button type="submit">Simpan Perubahan</button>
+//     ` +console.log(editForm);
+
+//     document.body.appendChild(editForm);
+
+//     editForm.addEventListener("submit", (e) => {
+//       e.preventDefault();
+//       const newTitle = document.getElementById("editTitle").value;
+//       const newAuthor = document.getElementById("editAuthor").value;
+//       const newYear = document.getElementById("editYear").value;
+
+//       books[bookIndex].title = newTitle;
+//       books[bookIndex].author = newAuthor;
+//       books[bookIndex].year = newYear;
+
+//       displayBooks();
+//       document.body.removeChild(editForm);
+//     });
+//   }
+// });
+
+
+const editButton = document.createElement("button");
+editButton.textContent = "Edit";
+editButton.addEventListener("click", () => {
+  const modal = document.createElement("div");
+  modal.className = "modal";
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h2>Edit Buku</h2>
+      <form>
+        <label for="title">Judul:</label>
+        <input type="text" id="title" value="${book.title}"><br><br>
+        <label for="author">Penulis:</label>
+        <input type="text" id="author" value="${book.author}"><br><br>
+        <label for="year">Tahun:</label>
+        <input type="number" id="year" value="${book.year}"><br><br>
+        <button type="submit">Simpan Perubahan</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "Tutup";
+  closeButton.addEventListener("click", () => {
+    document.body.removeChild(modal);
+  });
+  modal.appendChild(closeButton);
+});
   
         buttonContainer.appendChild(completeButton);
         buttonContainer.appendChild(deleteButton);
@@ -159,3 +219,11 @@ let books = [
   
   displayBooks();
   //blom fix
+
+
+  //modal
+  const closeButton = document.querySelector(".close");
+closeButton.addEventListener("click", () => {
+  const modal = document.getElementById("editModal");
+  modal.style.display = "none";
+});
